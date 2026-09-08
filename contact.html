@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Ikiru</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand">
+        <svg class="brand__enso" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M50 12c20 0 35 15 35 35a35 33 0 1 1-40-34" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
+        <span>Ikiru</span>
+      </a>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="philosophy.html">Philosophy</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="title-band">
+      <div class="container">
+        <p class="eyebrow">Contact</p>
+        <h1>Start Your Healing Journey</h1>
+        <p class="title-band__intro">Have a question or ready to book a session? Reach out below and I'll get back to you as soon as I can.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+        <form action="https://formspree.io/f/REPLACE_ME" method="POST">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-field">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary">Send Message</button>
+        </form>
+
+        <div class="contact-details">
+          <svg class="contact-details__enso" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <path d="M50 12c20 0 35 15 35 35a35 33 0 1 1-40-34" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <a href="tel:+61000000000">(02) 0000 0000</a>
+          <a href="mailto:hello@ikiru.com.au">hello@ikiru.com.au</a>
+          <p style="color: var(--color-stone); margin-top: 24px;">Monday &ndash; Friday, 9am &ndash; 5pm</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="brand" style="justify-content: center; margin-bottom: 20px;">
+        <svg class="brand__enso" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M50 12c20 0 35 15 35 35a35 33 0 1 1-40-34" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
+        <span>Ikiru</span>
+      </div>
+      <p>&copy; 2026 Ikiru Holistic Healing. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
