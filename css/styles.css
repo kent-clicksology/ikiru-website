@@ -81,7 +81,7 @@ p { margin: 0 0 1em; }
 }
 
 .hero { 
-  background-image: url('assets/NS_HOMEPAGEBANNER_v2.4.jpg');
+  background-image: url('../assets/NS_HOMEPAGEBANNER_v2.4.jpg');
   background-size: cover; 
   background-position: center;
   background-attachment: fixed;
