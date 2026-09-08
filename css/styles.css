@@ -81,7 +81,7 @@ p { margin: 0 0 1em; }
 }
 
 .hero { 
-  background-image: url('https://images.unsplash.com/photo-1490682143684-14369e18dce8?q=80&w=2000&auto=format&fit=crop');
+  background-image: url('assets/NS_HOMEPAGEBANNER_v2.4.jpg');
   background-size: cover; 
   background-position: center;
   background-attachment: fixed;
