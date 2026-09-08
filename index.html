@@ -21,7 +21,7 @@
       </a>
       <nav class="site-nav">
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html" aria-current="page">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="philosophy.html">Philosophy</a></li>
@@ -32,30 +32,70 @@
   </header>
 
   <main>
+    <!-- Glassmorphic Hero Section -->
     <section class="hero">
-      <div class="container hero__inner">
+      <div class="container hero__inner glass-panel">
+        <p class="eyebrow" style="color: var(--color-amber);">Welcome to Ikiru</p>
         <h1>Your Path to Holistic Healing</h1>
         <p>With over 30 years of experience, I am here to support you on your journey to vibrant health and wellbeing. My approach is rooted in holistic healing—nurturing the whole person: body, mind, and spirit.</p>
         <a class="btn btn--primary" href="contact.html">Book a Session</a>
       </div>
     </section>
 
+    <!-- Beautiful Two-Column Welcome Section -->
     <section class="section">
-      <div class="container">
-        <p class="eyebrow">Welcome</p>
-        <h2>A Holistic Approach, Personally Tailored</h2>
-        <p>Every individual is unique, and so is the healing process. I combine time-honored therapies such as Shiatsu, cupping, dry needling, moxibustion, and exercise therapy with the transformative power of energy medicine and the wisdom of food as medicine. This blend helps to restore balance, release tension, and promote natural healing.</p>
-        <p>Whether you are seeking relief from pain, stress reduction, or a deeper connection with your own health, I provide personalized care tailored to your needs. Together, we will explore the best ways to harmonize your energy, strengthen your body, and nourish yourself from the inside out.</p>
-        <a class="link-arrow" href="about.html">Learn more about me &rarr;</a>
+      <div class="container row">
+        <div>
+          <p class="eyebrow">Welcome</p>
+          <h2>A Holistic Approach, Personally Tailored</h2>
+          <p>Every individual is unique, and so is the healing process. I combine time-honored therapies such as Shiatsu, cupping, dry needling, moxibustion, and exercise therapy with the transformative power of energy medicine and the wisdom of food as medicine.</p>
+          <p>Together, we will explore the best ways to harmonize your energy, strengthen your body, and nourish yourself from the inside out.</p>
+          <a class="link-arrow" href="about.html">Learn more about me &rarr;</a>
+        </div>
+        <div class="row__media">
+          <img class="image-rounded" src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=1000&auto=format&fit=crop" alt="Zen balancing stones">
+        </div>
       </div>
     </section>
 
+    <!-- Interactive Visual Grid for Services -->
     <section class="section section--charcoal">
-      <div class="container" style="text-align: center;">
-        <h2>Start Your Healing Journey Today</h2>
-        <p style="color: var(--color-stone); margin-bottom: 30px;">Because lasting wellbeing comes from treating the whole person, not just symptoms.</p>
-        <a class="btn btn--primary" href="contact.html" style="margin-right: 15px;">Get in Touch</a>
-        <a class="btn btn--ghost" href="tel:+61000000000">Call (02) 0000 0000</a>
+      <div class="container">
+        <p class="eyebrow" style="text-align: center; color: var(--color-amber);">What I Offer</p>
+        <h2 style="text-align: center;">Core Modalities</h2>
+        
+        <div class="visual-grid">
+          <!-- Card 1 -->
+          <div class="visual-card" onclick="window.location.href='services.html';">
+            <img src="https://images.unsplash.com/photo-1519947486511-46149fa0a254?q=80&w=800&auto=format&fit=crop" alt="Hands-on healing therapy">
+            <div class="visual-card-content">
+              <h3>Shiatsu & Bodywork</h3>
+              <p>Deeply relaxing hands-on therapy to release tension, restore energy flow, and promote natural healing.</p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="visual-card" onclick="window.location.href='services.html';">
+            <img src="https://images.unsplash.com/photo-1597554900741-f404fa3a23cb?q=80&w=800&auto=format&fit=crop" alt="Traditional green tea">
+            <div class="visual-card-content">
+              <h3>Food as Medicine</h3>
+              <p>Guidance on nourishing your body through mindful eating, balanced nutrition, and traditional wisdom.</p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="visual-card" onclick="window.location.href='services.html';">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop" alt="Peaceful nature landscape">
+            <div class="visual-card-content">
+              <h3>Energy Medicine</h3>
+              <p>Targeted techniques to harmonize your body’s energy system and clear energetic imbalances.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 56px;">
+          <a class="btn btn--primary" href="contact.html">Start Your Journey</a>
+        </div>
       </div>
     </section>
   </main>
