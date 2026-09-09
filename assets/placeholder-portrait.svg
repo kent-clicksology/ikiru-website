@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Placeholder portrait">
+  <defs>
+    <linearGradient id="pg" x1="0" y1="0" x2="0.55" y2="1">
+      <stop offset="0" stop-color="#F8F3EA"/>
+      <stop offset="0.5" stop-color="#D9B896"/>
+      <stop offset="1" stop-color="#8A6A4A"/>
+    </linearGradient>
+    <radialGradient id="pl" cx="0.4" cy="0.3" r="0.62">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3A2B31" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#3A2B31" stop-opacity="0.10"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="1000" fill="url(#pg)"/>
+  <ellipse cx="330" cy="310" rx="440" ry="400" fill="url(#pl)"/>
+
+  <!-- a figure suggested, not drawn -->
+  <path d="M190 1000 C190 758 296 682 400 682 C504 682 610 758 610 1000 Z" fill="url(#pf)"/>
+  <circle cx="400" cy="452" r="126" fill="#3A2B31" opacity="0.17"/>
+
+  <!-- brand mark, quietly -->
+  <path d="M660 118 C700 118 728 148 728 188 A68 64 0 1 1 650 122"
+        fill="none" stroke="#D98F2B" stroke-opacity="0.4" stroke-width="6" stroke-linecap="round"/>
+</svg>

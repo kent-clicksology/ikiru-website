@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Placeholder treatment room image">
+  <defs>
+    <linearGradient id="tg" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#F8F3EA"/>
+      <stop offset="0.55" stop-color="#C9A06B"/>
+      <stop offset="1" stop-color="#3A2B31"/>
+    </linearGradient>
+    <radialGradient id="tw" cx="0.72" cy="0.28" r="0.5">
+      <stop offset="0" stop-color="#D98F2B" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#D98F2B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#tg)"/>
+  <rect width="1200" height="800" fill="url(#tw)"/>
+
+  <!-- pressure, easing outward -->
+  <g fill="none" stroke="#F6F0E4" stroke-opacity="0.34">
+    <circle cx="820" cy="330" r="62" stroke-width="1.5"/>
+    <circle cx="820" cy="330" r="118" stroke-width="1.25"/>
+    <circle cx="820" cy="330" r="182" stroke-width="1"/>
+    <circle cx="820" cy="330" r="252" stroke-width="0.75"/>
+  </g>
+  <circle cx="820" cy="330" r="7" fill="#C1401C" opacity="0.65"/>
+
+  <!-- resting lines -->
+  <g fill="none" stroke="#3A2B31" stroke-opacity="0.14" stroke-linecap="round">
+    <path d="M0 612 C220 560 420 596 640 640 C840 680 1020 668 1200 612" stroke-width="2"/>
+    <path d="M0 686 C240 640 440 672 660 706 C860 736 1030 726 1200 682" stroke-width="1.5"/>
+  </g>
+</svg>
