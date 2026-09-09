@@ -1,23 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Me | Ikiru</title>
+  <title>About · Ikiru</title>
+  <meta name="description" content="Over 30 years of holistic, whole-person care combining hands-on therapies like Shiatsu with lifestyle and nutrition guidance.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>🍁</text></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ikiru">
+  <meta property="og:title" content="About · Ikiru">
+  <meta property="og:description" content="Over 30 years of holistic, whole-person care combining hands-on therapy with lifestyle and nutrition guidance.">
+  <meta property="og:url" content="https://ikiru.com.au/about.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-  <header class="site-header">
-    <div class="container site-header__inner">
+  <header class="site-header" data-header>
+    <div class="site-header__inner">
       <a href="index.html" class="brand">
-        <svg class="brand__enso" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M50 12c20 0 35 15 35 35a35 33 0 1 1-40-34" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
-        <span>Ikiru</span>
+        <span class="logo-seal" aria-hidden="true"><span class="leaf"></span></span>
+        <span class="brand__text">
+          <span class="brand__name">Ikiru</span>
+          <small class="brand__tagline">Holistic Therapies</small>
+        </span>
       </a>
-      <nav class="site-nav">
+      <nav class="site-nav" data-nav>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html" aria-current="page">About</a></li>
@@ -26,48 +35,78 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
   <main>
     <section class="title-band">
       <div class="container">
-        <p class="eyebrow">About</p>
-        <h1>Meet Your Therapist</h1>
-        <p class="title-band__intro">Over 30 years of experience in holistic, whole-person care.</p>
+        <h1>Meet your therapist</h1>
+        <p class="title-band__intro">Holistic, whole-person care — hands-on therapy, movement and nutrition working together.</p>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container prose">
-        <p>With over 30 years of experience, I am a dedicated therapist specializing in holistic healing approaches that nurture both the body and mind. My practice integrates a rich blend of traditional and contemporary therapies including Shiatsu, cupping, dry needling, moxibustion, and exercise therapy.</p>
-        <p>I am passionate about energy medicine and the profound ways it supports the body's natural healing processes. Through gentle, targeted techniques, I aim to restore balance, relieve pain, and enhance overall wellbeing.</p>
-        <div style="padding: 40px 0; border-top: 1px solid var(--color-stone); border-bottom: 1px solid var(--color-stone); margin: 48px 0; font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-ember);">
-          "Health is deeply connected to lifestyle."
+    <div class="content">
+      <section class="section">
+        <div class="container">
+          <div class="split">
+            <figure class="split__media">
+              <img src="assets/placeholder-portrait.svg" alt="Portrait of the therapist">
+            </figure>
+            <div class="split__body">
+              <p>With over 30 years of experience, I am a dedicated therapist specialising in holistic healing approaches that nurture both the body and mind. My practice integrates a rich blend of traditional and contemporary therapies including Shiatsu, cupping, dry needling, moxibustion and exercise therapy.</p>
+              <p>I am passionate about energy medicine and the profound ways it supports the body's natural healing processes. Through gentle, targeted techniques, I aim to restore balance, relieve pain and enhance overall wellbeing.</p>
+              <p class="pull-quote">Health is deeply connected to lifestyle.</p>
+              <p>Understanding that health is deeply connected to lifestyle, I also incorporate food as medicine principles into my work. By recognising the healing power of nutrition, I help clients make choices that support their bodies from the inside out.</p>
+              <p>My approach is tailored to meet individual needs, combining hands-on therapies with guidance on lifestyle and nutrition. Whether you are seeking relief from physical discomfort, emotional stress, or want to optimise your health, I am here to support you.</p>
+            </div>
+          </div>
         </div>
-        <p>Understanding that health is deeply connected to lifestyle, I also incorporate food as medicine principles into my work. By recognizing the healing power of nutrition, I help clients make choices that support their bodies from the inside out.</p>
-        <p>My holistic approach is tailored to meet individual needs, combining hands-on therapies with guidance on lifestyle and nutrition. Whether you seek relief from physical discomfort, emotional stress, or wish to optimize your health, I am here to support you on your healing journey.</p>
-      </div>
-    </section>
+      </section>
 
-    <section class="section section--charcoal">
-      <div class="container" style="text-align: center;">
-        <h2>Start Your Healing Journey Today</h2>
-        <p style="color: var(--color-stone); margin-bottom: 30px;">Because lasting wellbeing comes from treating the whole person, not just symptoms.</p>
-        <a class="btn btn--primary" href="contact.html" style="margin-right: 15px;">Get in Touch</a>
-      </div>
-    </section>
+      <section class="section">
+        <div class="container">
+          <div class="cta-band">
+            <div class="cta-band__message">
+              <h2>Start with a conversation</h2>
+              <p>Tell me what's going on and I'll suggest where we might begin.</p>
+            </div>
+            <div class="cta-band__actions">
+              <a class="btn btn--primary" href="contact.html">Ask about a session</a>
+              <a class="btn btn--secondary" href="tel:+61000000000">(02) 0000 0000</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <div class="brand" style="justify-content: center; margin-bottom: 20px;">
-        <svg class="brand__enso" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M50 12c20 0 35 15 35 35a35 33 0 1 1-40-34" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
-        <span>Ikiru</span>
+    <div class="container site-footer__inner">
+      <div class="footer-brand">
+        <span class="logo-seal" aria-hidden="true"><span class="leaf"></span></span>
+        <p class="footer-brand__name">Ikiru <span class="footer-brand__kanji" lang="ja">生きる</span></p>
+        <p class="footer-brand__tagline">Holistic Therapies</p>
       </div>
-      <p>&copy; 2026 Ikiru Holistic Healing. All rights reserved.</p>
+      <div class="footer-details">
+        <a href="tel:+61000000000">(02) 0000 0000</a>
+        <a href="mailto:hello@ikiru.com.au">hello@ikiru.com.au</a>
+        <nav class="footer-nav" aria-label="Footer">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="philosophy.html">Philosophy</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="footer-copyright">&copy; 2026 Ikiru. All rights reserved.</p>
     </div>
   </footer>
-
+  <script src="js/main.js"></script>
 </body>
 </html>

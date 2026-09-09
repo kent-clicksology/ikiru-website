@@ -1,23 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services | Ikiru</title>
+  <title>Services · Ikiru</title>
+  <meta name="description" content="Shiatsu, cupping, dry needling, moxibustion, exercise therapy, energy medicine and food as medicine — combined into a plan built around you.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='88'>🍁</text></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ikiru">
+  <meta property="og:title" content="Services · Ikiru">
+  <meta property="og:description" content="Shiatsu, cupping, dry needling, moxibustion, exercise therapy, energy medicine and food as medicine.">
+  <meta property="og:url" content="https://ikiru.com.au/services.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-  <header class="site-header">
-    <div class="container site-header__inner">
+  <header class="site-header" data-header>
+    <div class="site-header__inner">
       <a href="index.html" class="brand">
-        <svg class="brand__enso" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M50 12c20 0 35 15 35 35a35 33 0 1 1-40-34" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
-        <span>Ikiru</span>
+        <span class="logo-seal" aria-hidden="true"><span class="leaf"></span></span>
+        <span class="brand__text">
+          <span class="brand__name">Ikiru</span>
+          <small class="brand__tagline">Holistic Therapies</small>
+        </span>
       </a>
-      <nav class="site-nav">
+      <nav class="site-nav" data-nav>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
@@ -26,68 +35,127 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
   <main>
     <section class="title-band">
       <div class="container">
-        <p class="eyebrow">Services</p>
-        <h1>Services Tailored to Your Holistic Health</h1>
-        <p class="title-band__intro">My therapy sessions are designed to support your whole being—addressing physical discomfort, emotional stress, and energetic imbalance. With over 30 years of experience, I combine a variety of healing techniques to create a personalized treatment plan just for you.</p>
+        <h1>Services tailored to your holistic health</h1>
+        <p class="title-band__intro">My therapy sessions are designed to support your whole being — addressing physical discomfort, emotional stress, and energetic imbalance. With over 30 years of experience, I combine a variety of healing techniques to create a personalised treatment plan just for you.</p>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="row">
-          <div><p class="eyebrow">01</p><h2>Shiatsu Therapy</h2><p>A deeply relaxing hands-on therapy that helps release tension and restore energy flow.</p></div>
-          <div class="row__media"><svg class="row__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 22V10a3 3 0 0 1 6 0v9"/><path d="M22 19V8a3 3 0 0 1 6 0v11"/><path d="M28 19v-6a3 3 0 0 1 6 0v15c0 8-6 14-14 14s-12-5-14-11l-3-8a3 3 0 0 1 5-3l3 4"/></svg></div>
+    <div class="content">
+      <section class="section">
+        <div class="container">
+          <div class="service-grid">
+            <div class="service">
+              <svg class="service__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 22V10a3 3 0 0 1 6 0v9"/><path d="M22 19V8a3 3 0 0 1 6 0v11"/><path d="M28 19v-6a3 3 0 0 1 6 0v15c0 8-6 14-14 14s-12-5-14-11l-3-8a3 3 0 0 1 5-3l3 4"/></svg>
+              <h3>Shiatsu</h3>
+              <p>Deeply relaxing hands-on therapy that releases held tension and restores the flow of energy through the body.</p>
+            </div>
+            <div class="service">
+              <svg class="service__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="16" cy="24" r="10"/><circle cx="34" cy="24" r="6"/></svg>
+              <h3>Cupping</h3>
+              <p>A traditional technique using gentle suction to draw circulation into tight tissue and support the body's clearing processes.</p>
+            </div>
+            <div class="service">
+              <svg class="service__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="10" y1="38" x2="38" y2="10"/><line x1="30" y1="10" x2="38" y2="10"/><line x1="38" y1="10" x2="38" y2="18"/></svg>
+              <h3>Dry needling</h3>
+              <p>Fine needles placed directly into tight bands of muscle to release trigger points and settle persistent pain.</p>
+            </div>
+            <div class="service">
+              <svg class="service__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M24 6c6 8-4 10-4 16a4 4 0 0 0 8 0c0-2-1-3-1-3s3 2 3 8a10 10 0 0 1-20 0c0-9 8-11 8-21z"/></svg>
+              <h3>Moxibustion</h3>
+              <p>Warming herbs held near specific points, bringing gentle heat into cold or stagnant areas to stimulate healing.</p>
+            </div>
+            <div class="service">
+              <svg class="service__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="24" cy="8" r="4"/><path d="M24 12v14M24 18l-10 6M24 18l10 6M24 26l-8 14M24 26l8 14"/></svg>
+              <h3>Exercise therapy</h3>
+              <p>Movement prescribed for your body and your week — building strength and mobility that holds between sessions.</p>
+            </div>
+            <div class="service">
+              <svg class="service__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M24 6a18 18 0 1 0 18 18 9 9 0 1 1-9-9"/></svg>
+              <h3>Energy medicine</h3>
+              <p>Working with the body's energetic system to clear what is blocked and settle what is overactive.</p>
+            </div>
+            <div class="service">
+              <svg class="service__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 24h32a12 14 0 0 1-32 0z"/><path d="M24 24V14c4 0 8 2 8 6"/></svg>
+              <h3>Food as medicine</h3>
+              <p>Practical guidance on eating for your constitution, so the work we do in the room keeps working at home.</p>
+            </div>
+          </div>
         </div>
-        <div class="row row--reverse">
-          <div><p class="eyebrow">02</p><h2>Cupping</h2><p>A traditional technique that supports circulation and detoxification.</p></div>
-          <div class="row__media"><svg class="row__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="16" cy="24" r="10"/><circle cx="34" cy="24" r="6"/></svg></div>
-        </div>
-        <div class="row">
-          <div><p class="eyebrow">03</p><h2>Dry Needling</h2><p>Targeted treatment for muscular pain and tightness.</p></div>
-          <div class="row__media"><svg class="row__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="10" y1="38" x2="38" y2="10"/><line x1="30" y1="10" x2="38" y2="10"/><line x1="38" y1="10" x2="38" y2="18"/></svg></div>
-        </div>
-        <div class="row row--reverse">
-          <div><p class="eyebrow">04</p><h2>Moxibustion</h2><p>Gentle heat therapy to stimulate healing and balance.</p></div>
-          <div class="row__media"><svg class="row__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M24 6c6 8-4 10-4 16a4 4 0 0 0 8 0c0-2-1-3-1-3s3 2 3 8a10 10 0 0 1-20 0c0-9 8-11 8-21z"/></svg></div>
-        </div>
-        <div class="row">
-          <div><p class="eyebrow">05</p><h2>Exercise Therapy</h2><p>Tailored movement practices to build strength, flexibility, and vitality.</p></div>
-          <div class="row__media"><svg class="row__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="24" cy="8" r="4"/><path d="M24 12v14M24 18l-10 6M24 18l10 6M24 26l-8 14M24 26l8 14"/></svg></div>
-        </div>
-        <div class="row row--reverse">
-          <div><p class="eyebrow">06</p><h2>Energy Medicine</h2><p>Techniques to harmonize your body’s energy system and promote natural healing.</p></div>
-          <div class="row__media"><svg class="row__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M24 6a18 18 0 1 0 18 18 9 9 0 1 1-9-9"/></svg></div>
-        </div>
-        <div class="row">
-          <div><p class="eyebrow">07</p><h2>Food as Medicine</h2><p>Guidance on nourishing your body through mindful eating and balanced nutrition.</p></div>
-          <div class="row__media"><svg class="row__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 24h32a12 14 0 0 1-32 0z"/><path d="M24 24V14c4 0 8 2 8 6"/></svg></div>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section section--charcoal">
-      <div class="container" style="text-align: center;">
-        <h2>Ready to restore balance?</h2>
-        <a class="btn btn--primary" href="contact.html" style="margin-top: 20px;">Book a Session</a>
-      </div>
-    </section>
+      <section class="section">
+        <div class="container">
+          <h2>How a plan comes together</h2>
+          <p class="section-lede">Each session is guided by your own needs — restoring balance and supporting your body's ability to heal itself, whether you're after relief, rest, or something that lasts.</p>
+          <div class="process">
+            <div class="process__step">
+              <span class="process__n" aria-hidden="true">01</span>
+              <h3>A single treatment</h3>
+              <p>Most people start here, so I can see how your body actually responds.</p>
+            </div>
+            <div class="process__step">
+              <span class="process__n" aria-hidden="true">02</span>
+              <h3>See how you respond</h3>
+              <p>Your reaction tells me more than an intake form ever could.</p>
+            </div>
+            <div class="process__step">
+              <span class="process__n" aria-hidden="true">03</span>
+              <h3>Find your rhythm</h3>
+              <p>From there, we decide together what a useful pace looks like.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="cta-band">
+            <div class="cta-band__message">
+              <h2>Not sure which you need?</h2>
+              <p>That's normal, and it's my job to work out. Tell me what's going on and we'll start there.</p>
+            </div>
+            <div class="cta-band__actions">
+              <a class="btn btn--primary" href="contact.html">Ask about a session</a>
+              <a class="btn btn--secondary" href="tel:+61000000000">(02) 0000 0000</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <div class="brand" style="justify-content: center; margin-bottom: 20px;">
-        <svg class="brand__enso" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M50 12c20 0 35 15 35 35a35 33 0 1 1-40-34" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
-        <span>Ikiru</span>
+    <div class="container site-footer__inner">
+      <div class="footer-brand">
+        <span class="logo-seal" aria-hidden="true"><span class="leaf"></span></span>
+        <p class="footer-brand__name">Ikiru <span class="footer-brand__kanji" lang="ja">生きる</span></p>
+        <p class="footer-brand__tagline">Holistic Therapies</p>
       </div>
-      <p>&copy; 2026 Ikiru Holistic Healing. All rights reserved.</p>
+      <div class="footer-details">
+        <a href="tel:+61000000000">(02) 0000 0000</a>
+        <a href="mailto:hello@ikiru.com.au">hello@ikiru.com.au</a>
+        <nav class="footer-nav" aria-label="Footer">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="philosophy.html">Philosophy</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="footer-copyright">&copy; 2026 Ikiru. All rights reserved.</p>
     </div>
   </footer>
-
+  <script src="js/main.js"></script>
 </body>
 </html>
