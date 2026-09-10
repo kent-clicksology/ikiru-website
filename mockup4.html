@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ikiru — Holistic Therapies | Oriental Inspired Healing</title>
+  <meta name="description" content="Ikiru combines shiatsu, cupping, dry needling, moxibustion and gentle energetic work into calm, personalised sessions. Thirty years of listening with my hands." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================
+       CSS CUSTOM PROPERTIES — Oriental Palette
+       ============================================ */
+    :root {
+      --cream:        #f5f0e8;
+      --cream-light:  #faf7f2;
+      --cream-dark:   #ebe4d6;
+      --sage:         #8a9a7b;
+      --sage-deep:    #6b7d5e;
+      --sage-soft:    #c5d1b8;
+      --charcoal:     #2d2a26;
+      --charcoal-soft:#4a4640;
+      --ink:          #1a1815;
+      --gold:         #b8996a;
+      --gold-soft:    #d4c4a0;
+      --white:        #ffffff;
+
+      --font-serif:   'Playfair Display', Georgia, serif;
+      --font-sans:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --space-xs:     0.5rem;
+      --space-sm:     1rem;
+      --space-md:     2rem;
+      --space-lg:     4rem;
+      --space-xl:     6rem;
+      --space-2xl:    8rem;
+
+      --radius-sm:    4px;
+      --radius-md:    8px;
+      --radius-lg:    16px;
+      --radius-full:  9999px;
+
+      --shadow-soft:  0 2px 20px rgba(45, 42, 38, 0.06);
+      --shadow-md:    0 8px 32px rgba(45, 42, 38, 0.10);
+      --shadow-lg:    0 16px 48px rgba(45, 42, 38, 0.14);
+
+      --transition:   0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--charcoal);
+      background-color: var(--cream-light);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* Washi paper texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* ============================================
+       UTILITY
+       ============================================ */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    .section-label {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage-deep);
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--sage);
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: var(--space-sm);
+    }
+
+    /* FIXED: Added margin auto to center the block */
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--charcoal-soft);
+      max-width: 600px;
+      line-height: 1.7;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--sage), var(--gold-soft));
+      margin: var(--space-md) 0;
+      border-radius: var(--radius-full);
+    }
+
+    .divider--center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ============================================
+       NAVIGATION
+       ============================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: var(--space-sm) 0;
+      transition: var(--transition);
+      background: transparent;
+    }
+
+    .nav.scrolled {
+      background: rgba(250, 247, 242, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(45, 42, 38, 0.06);
+      padding: 0.8rem 0;
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav__logo {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .nav__logo-sub {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--charcoal-soft);
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      position: relative;
+      padding: 0.25rem 0;
+    }
+
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--sage-deep);
+      transition: var(--transition);
+    }
+
+    .nav__links a:hover::after {
+      width: 100%;
+    }
+
+    /* ============================================
+       FIXED NAV BUTTON (Bigger, Readable, Distinct)
+       ============================================ */
+    .nav__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 1rem 2.2rem;
+      background: var(--charcoal);
+      color: #ffffff !important;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      transition: var(--transition);
+      line-height: 1;
+      text-decoration: none;
+      min-width: 170px;
+      border: 1px solid transparent;
+      box-shadow: 0 4px 12px rgba(45, 42, 38, 0.15);
+    }
+
+    .nav__cta:hover {
+      background: var(--sage-deep);
+      color: #ffffff !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(45, 42, 38, 0.25);
+    }
+
+    .nav__cta svg {
+      width: 18px;
+      height: 18px;
+      stroke: #ffffff !important;
+      stroke-width: 2;
+      fill: none;
+      flex-shrink: 0;
+    }
+
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 0.5rem;
+    }
+
+    .nav__hamburger span {
+      width: 24px;
+      height: 1.5px;
+      background: var(--charcoal);
+      transition: var(--transition);
+    }
+
+    /* ============================================
+       HERO SECTION (Centered)
+       ============================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 160px;
+      padding-bottom: 100px;
+      overflow: hidden;
+      background: var(--cream);
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero__bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.5; 
+    }
+
+    .hero__bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(245, 240, 232, 0.85) 0%,
+        rgba(245, 240, 232, 0.6) 50%,
+        rgba(245, 240, 232, 0.75) 100%
+      );
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero__label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--sage-deep);
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      justify-content: center;
+    }
+
+    .hero__label::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--sage);
+    }
+
+    .hero__title {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 7vw, 5.5rem);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.05;
+      margin-bottom: var(--space-md);
+      letter-spacing: -0.02em;
+    }
+
+    .hero__subtitle {
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 400;
+      color: var(--charcoal);
+      line-height: 1.6;
+      margin-bottom: var(--space-lg);
+      max-width: 600px;
+    }
+
+    .hero__subtitle em {
+      font-style: italic;
+      color: var(--sage-deep);
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xl);
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 2rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border-radius: var(--radius-full);
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .btn--primary {
+      background: var(--charcoal);
+      color: var(--cream-light);
+    }
+
+    .btn--primary:hover {
+      background: var(--sage-deep);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--charcoal);
+      border: 1.5px solid var(--charcoal);
+    }
+
+    .btn--outline:hover {
+      background: var(--charcoal);
+      color: var(--cream-light);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--sage-deep);
+      padding: 0.9rem 0.5rem;
+    }
+
+    .btn--ghost:hover {
+      color: var(--charcoal);
+    }
+
+    .hero__stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .hero__stat {
+      border-left: 1px solid var(--cream-dark);
+      padding-left: var(--space-sm);
+      text-align: left;
+    }
+
+    .hero__stat-value {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero__stat-label {
+      font-size: 0.75rem;
+      color: var(--charcoal-soft);
+      letter-spacing: 0.05em;
+    }
+
+    .hero__scroll {
+      position: absolute;
+      bottom: var(--space-md);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--charcoal-soft);
+      z-index: 2;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .hero__scroll-icon {
+      width: 20px;
+      height: 32px;
+      border: 1.5px solid var(--charcoal-soft);
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .hero__scroll-icon::after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 6px;
+      background: var(--charcoal-soft);
+      border-radius: 1px;
+      animation: scrollDot 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-8px); }
+    }
+
+    @keyframes scrollDot {
+      0%, 100% { opacity: 1; top: 6px; }
+      50% { opacity: 0.3; top: 16px; }
+    }
+
+    /* ============================================
+       ABOUT SECTION
+       ============================================ */
+    .about {
+      padding: var(--space-2xl) 0;
+      background: var(--cream-light);
+      position: relative;
+    }
+
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .about__image {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .about__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about__image-badge {
+      position: absolute;
+      bottom: var(--space-md);
+      left: var(--space-md);
+      background: rgba(250, 247, 242, 0.95);
+      backdrop-filter: blur(8px);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .about__image-badge-value {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--sage-deep);
+      line-height: 1;
+    }
+
+    .about__image-badge-label {
+      font-size: 0.75rem;
+      color: var(--charcoal-soft);
+      margin-top: 0.25rem;
+    }
+
+    .about__content {
+      padding: var(--space-md) 0;
+    }
+
+    .about__quote {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--charcoal);
+      line-height: 1.6;
+      margin: var(--space-md) 0;
+      padding-left: var(--space-md);
+      border-left: 2px solid var(--sage);
+    }
+
+    .about__text {
+      font-size: 1rem;
+      color: var(--charcoal-soft);
+      line-height: 1.8;
+      margin-bottom: var(--space-md);
+    }
+
+    .about__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    /* ============================================
+       SERVICES SECTION
+       ============================================ */
+    .services {
+      padding: var(--space-2xl) 0;
+      background: var(--cream);
+      position: relative;
+    }
+
+    .services__header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .service-card {
+      background: var(--cream-light);
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg) var(--space-md);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sage), var(--gold-soft));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--sage-soft);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-card__icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-md);
+      font-size: 1.8rem;
+      color: var(--sage-deep);
+    }
+
+    .service-card__icon svg {
+      width: 36px;
+      height: 36px;
+      stroke: var(--sage-deep);
+      stroke-width: 1.2;
+      fill: none;
+    }
+
+    .service-card__title {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: var(--space-xs);
+    }
+
+    .service-card__desc {
+      font-size: 0.9rem;
+      color: var(--charcoal-soft);
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
+    }
+
+    .service-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--sage-deep);
+    }
+
+    .service-card__link:hover {
+      color: var(--charcoal);
+      gap: 0.7rem;
+    }
+
+    /* ============================================
+       PROCESS / METHOD SECTION
+       ============================================ */
+    .process {
+      padding: var(--space-2xl) 0;
+      background: var(--cream-light);
+      position: relative;
+    }
+
+    .process__header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    .process__steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--space-sm);
+      position: relative;
+    }
+
+    .process__steps::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--sage-soft), var(--sage), var(--sage-soft), transparent);
+      z-index: 0;
+    }
+
+    .process-step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      padding: 0 var(--space-xs);
+    }
+
+    .process-step__number {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto var(--space-md);
+      background: var(--cream);
+      border: 1.5px solid var(--sage-soft);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--sage-deep);
+      transition: var(--transition);
+    }
+
+    .process-step:hover .process-step__number {
+      background: var(--sage-deep);
+      color: var(--cream-light);
+      border-color: var(--sage-deep);
+      transform: scale(1.05);
+    }
+
+    .process-step__title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: var(--space-xs);
+    }
+
+    .process-step__desc {
+      font-size: 0.85rem;
+      color: var(--charcoal-soft);
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       TESTIMONIALS
+       ============================================ */
+    .testimonials {
+      padding: var(--space-2xl) 0;
+      background: var(--cream);
+    }
+
+    .testimonials__header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    .testimonials__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .testimonial-card {
+      background: var(--cream-light);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg) var(--space-md);
+      position: relative;
+    }
+
+    .testimonial-card__quote-mark {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      color: var(--sage-soft);
+      line-height: 1;
+      margin-bottom: var(--space-sm);
+    }
+
+    .testimonial-card__text {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--charcoal);
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
+    }
+
+    .testimonial-card__author {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--sage-deep);
+    }
+
+    /* ============================================
+       GALLERY
+       ============================================ */
+    .gallery {
+      padding: var(--space-2xl) 0;
+      background: var(--cream-light);
+    }
+
+    .gallery__header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    .gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 280px 280px;
+      gap: var(--space-sm);
+    }
+
+    .gallery__item {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery__item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery__item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26, 24, 21, 0.3), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .gallery__item:hover::after {
+      opacity: 1;
+    }
+
+    .gallery__item--wide {
+      grid-column: span 2;
+    }
+
+    .gallery__item--tall {
+      grid-row: span 2;
+    }
+
+    /* ============================================
+       CTA SECTION
+       ============================================ */
+    .cta {
+      padding: var(--space-2xl) 0;
+      background: var(--charcoal);
+      color: var(--cream-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta__bg-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      background-image:
+        radial-gradient(circle at 20% 50%, var(--sage) 1px, transparent 1px),
+        radial-gradient(circle at 80% 20%, var(--sage) 1px, transparent 1px),
+        radial-gradient(circle at 60% 80%, var(--sage) 1px, transparent 1px);
+      background-size: 60px 60px, 80px 80px, 70px 70px;
+    }
+
+    .cta__content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta__label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--sage-soft);
+      margin-bottom: var(--space-sm);
+    }
+
+    .cta__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      color: var(--cream-light);
+      line-height: 1.2;
+      margin-bottom: var(--space-sm);
+    }
+
+    .cta__text {
+      font-size: 1.05rem;
+      color: rgba(250, 247, 242, 0.7);
+      margin-bottom: var(--space-lg);
+      line-height: 1.7;
+    }
+
+    .cta__actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-sm);
+    }
+
+    .cta .btn--primary {
+      background: var(--cream-light);
+      color: var(--charcoal);
+    }
+
+    .cta .btn--primary:hover {
+      background: var(--sage-soft);
+    }
+
+    .cta .btn--outline {
+      border-color: rgba(250, 247, 242, 0.4);
+      color: var(--cream-light);
+    }
+
+    .cta .btn--outline:hover {
+      background: var(--cream-light);
+      color: var(--charcoal);
+    }
+
+    .cta__phone {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: var(--space-md);
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--cream-light);
+    }
+
+    .cta__phone:hover {
+      color: var(--sage-soft);
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      padding: var(--space-lg) 0 var(--space-md);
+      background: var(--ink);
+      color: rgba(250, 247, 242, 0.6);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-lg);
+    }
+
+    .footer__brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--cream-light);
+      margin-bottom: var(--space-xs);
+    }
+
+    .footer__brand-sub {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(250, 247, 242, 0.4);
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer__brand-desc {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: 320px;
+    }
+
+    .footer__heading {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream-light);
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer__links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .footer__links a {
+      font-size: 0.9rem;
+      color: rgba(250, 247, 242, 0.6);
+    }
+
+    .footer__links a:hover {
+      color: var(--cream-light);
+    }
+
+    .footer__bottom {
+      padding-top: var(--space-md);
+      border-top: 1px solid rgba(250, 247, 242, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .footer__bottom a {
+      color: rgba(250, 247, 242, 0.6);
+    }
+
+    .footer__bottom a:hover {
+      color: var(--cream-light);
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 1024px) {
+      .services__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .process__steps {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-md);
+      }
+      .process__steps::before {
+        display: none;
+      }
+      .gallery__grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+      .gallery__item--wide,
+      .gallery__item--tall {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+      .gallery__item {
+        aspect-ratio: 4/3;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav__links {
+        display: none;
+      }
+      .nav__hamburger {
+        display: flex;
+      }
+      .about__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+      .services__grid {
+        grid-template-columns: 1fr;
+      }
+      .process__steps {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      .testimonials__grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery__grid {
+        grid-template-columns: 1fr;
+      }
+      .hero__stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-sm);
+      }
+      .footer__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+      }
+      .footer__bottom {
+        flex-direction: column;
+        gap: var(--space-sm);
+        text-align: center;
+      }
+    }
+
+    /* ============================================
+       ANIMATIONS
+       ============================================ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#top" class="nav__logo">
+        Ikiru
+        <span class="nav__logo-sub">Holistic Therapies</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <a href="tel:0712345678" class="nav__cta">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Call Now
+          </a>
+        </li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="top">
+    <div class="hero__bg">
+      <img class="hero__bg-img" src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1600&q=80" alt="" />
+      <div class="hero__bg-overlay"></div>
+    </div>
+
+    <!-- Hero Content - Centered -->
+    <div class="container hero__content">
+      <div class="hero__label">Oriental inspired healing</div>
+      <h1 class="hero__title">
+        Ikiru
+      </h1>
+      <p class="hero__subtitle">
+        Thirty years of <em>listening with my hands.</em> Ikiru combines shiatsu, cupping, dry needling, moxibustion and gentle energetic work into calm, personalised sessions.
+      </p>
+      <div class="hero__actions">
+        <a href="tel:0712345678" class="btn btn--primary">
+          <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;stroke-width:2;fill:none;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Call 07 1234 5678
+        </a>
+        <a href="#contact" class="btn btn--outline">Book / Contact Us</a>
+      </div>
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <div class="hero__stat-value">30+</div>
+          <div class="hero__stat-label">Years experience</div>
+        </div>
+        <div class="hero__stat">
+          <div class="hero__stat-value">By appt</div>
+          <div class="hero__stat-label">Only bookings</div>
+        </div>
+        <div class="hero__stat">
+          <div class="hero__stat-value">Holistic</div>
+          <div class="hero__stat-label">Whole-person care</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll">
+      <div class="hero__scroll-icon"></div>
+      Scroll to explore
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__image fade-in">
+          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=80" alt="Calm therapy space" />
+          <div class="about__image-badge">
+            <div class="about__image-badge-value">30+</div>
+            <div class="about__image-badge-label">Years of listening to the body</div>
+          </div>
+        </div>
+        <div class="about__content fade-in">
+          <div class="section-label">About Ikiru</div>
+          <h2 class="section-title">A practice shaped around what your body needs today.</h2>
+          <div class="divider"></div>
+          <p class="about__text">
+            The approach is calm, collaborative and highly individual. Rather than chasing symptoms, the treatment looks for what is keeping the imbalance in place — and gently works toward better movement, circulation, and ease.
+          </p>
+          <blockquote class="about__quote">
+            "Lasting wellbeing comes from treating the whole person, not just the symptoms."
+          </blockquote>
+          <p class="about__text">
+            Sessions can include shiatsu, cupping, dry needling, moxibustion, exercise therapy, energy medicine and food-as-medicine guidance. Each visit is shaped to your condition, your pace, and your life.
+          </p>
+          <div class="about__actions">
+            <a href="tel:0712345678" class="btn btn--primary">Book by Phone</a>
+            <a href="#services" class="btn btn--ghost">See Services →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services__header fade-in">
+        <div class="section-label" style="justify-content: center;">Services</div>
+        <h2 class="section-title">Therapies that work together.</h2>
+        <div class="divider divider--center"></div>
+        <p class="section-subtitle">
+          A clean presentation of the main modalities, each introduced as part of a broader healing plan rather than a disconnected list.
+        </p>
+      </div>
+
+      <div class="services__grid">
+        <!-- Shiatsu -->
+        <div class="service-card fade-in">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C9 2 7 4 7 7c0 2 1 3 2 4l-1 5c0 1 1 2 2 2h4c1 0 2-1 2-2l-1-5c1-1 2-2 2-4 0-3-2-5-5-5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="service-card__title">Shiatsu</h3>
+          <p class="service-card__desc">Deeply relaxing hands-on work that supports alignment, balance and nervous system calm.</p>
+          <a href="#contact" class="service-card__link">Book a session →</a>
+        </div>
+
+        <!-- Cupping -->
+        <div class="service-card fade-in">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M6 8c0-2 2-4 6-4s6 2 6 4v2c0 4-2 8-6 10-4-2-6-6-6-10V8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="service-card__title">Cupping</h3>
+          <p class="service-card__desc">A traditional technique used to encourage circulation and release tension in tight tissue.</p>
+          <a href="#contact" class="service-card__link">Book a session →</a>
+        </div>
+
+        <!-- Dry Needling -->
+        <div class="service-card fade-in">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2v14M8 20h8M12 16l-2 4M12 16l2 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="service-card__title">Dry Needling</h3>
+          <p class="service-card__desc">Precise treatment for stubborn muscular pain, knots, and restricted movement.</p>
+          <a href="#contact" class="service-card__link">Book a session →</a>
+        </div>
+
+        <!-- Moxibustion -->
+        <div class="service-card fade-in">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2c-2 3-4 5-4 8a4 4 0 0 0 8 0c0-3-2-5-4-8z" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14c0 3 2 6 4 8 2-2 4-5 4-8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="service-card__title">Moxibustion</h3>
+          <p class="service-card__desc">Gentle heat therapy used to warm stagnant areas and support natural healing.</p>
+          <a href="#contact" class="service-card__link">Book a session →</a>
+        </div>
+
+        <!-- Energy Medicine -->
+        <div class="service-card fade-in">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="service-card__title">Energy Medicine</h3>
+          <p class="service-card__desc">Subtle work that addresses how stress, fatigue and imbalance can show up in the body.</p>
+          <a href="#contact" class="service-card__link">Book a session →</a>
+        </div>
+
+        <!-- Exercise Therapy -->
+        <div class="service-card fade-in">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7v5M8 20l4-8 4 8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="service-card__title">Exercise Therapy</h3>
+          <p class="service-card__desc">Simple movement guidance to extend the benefits of treatment into daily life.</p>
+          <a href="#contact" class="service-card__link">Book a session →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROCESS ========== -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="process__header fade-in">
+        <div class="section-label" style="justify-content: center;">The Ikiru Method</div>
+        <h2 class="section-title">Listen. Understand. Treat. Restore.</h2>
+        <div class="divider divider--center"></div>
+        <p class="section-subtitle">
+          A visual treatment journey that feels clear and reassuring, with enough structure to communicate the process without becoming clinical.
+        </p>
+      </div>
+
+      <div class="process__steps">
+        <div class="process-step fade-in">
+          <div class="process-step__number">1</div>
+          <h3 class="process-step__title">Listen</h3>
+          <p class="process-step__desc">A calm conversation about symptoms, history and what your body is asking for.</p>
+        </div>
+        <div class="process-step fade-in">
+          <div class="process-step__number">2</div>
+          <h3 class="process-step__title">Understand</h3>
+          <p class="process-step__desc">Identify patterns in posture, stress, and daily habits that may be contributing.</p>
+        </div>
+        <div class="process-step fade-in">
+          <div class="process-step__number">3</div>
+          <h3 class="process-step__title">Treat</h3>
+          <p class="process-step__desc">Select the right combination of therapies for the day, not a fixed protocol.</p>
+        </div>
+        <div class="process-step fade-in">
+          <div class="process-step__number">4</div>
+          <h3 class="process-step__title">Restore</h3>
+          <p class="process-step__desc">Support the body's capacity to unwind, recover and move with greater ease.</p>
+        </div>
+        <div class="process-step fade-in">
+          <div class="process-step__number">5</div>
+          <h3 class="process-step__title">Maintain</h3>
+          <p class="process-step__desc">Optional follow-up guidance to help the benefits last beyond the treatment room.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="testimonials__header fade-in">
+        <div class="section-label" style="justify-content: center;">Client Testimonials</div>
+        <h2 class="section-title">Words from those we've worked with.</h2>
+        <div class="divider divider--center"></div>
+      </div>
+
+      <div class="testimonials__grid">
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-card__quote-mark">"</div>
+          <p class="testimonial-card__text">I felt calmer, lighter, and more mobile after just one session.</p>
+          <div class="testimonial-card__author">— Sarah W.</div>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-card__quote-mark">"</div>
+          <p class="testimonial-card__text">Thoughtful, gentle and incredibly effective. The space itself feels healing.</p>
+          <div class="testimonial-card__author">— Daniel P.</div>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-card__quote-mark">"</div>
+          <p class="testimonial-card__text">A beautifully calm experience from start to finish — very personal, very professional.</p>
+          <div class="testimonial-card__author">— Michelle T.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALLERY ========== -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="gallery__header fade-in">
+        <div class="section-label" style="justify-content: center;">Gallery</div>
+        <h2 class="section-title">A calm visual language.</h2>
+        <div class="divider divider--center"></div>
+        <p class="section-subtitle">
+          Warmth, softness, natural light, and quiet confidence — the feeling of the clinic.
+        </p>
+      </div>
+
+      <div class="gallery__grid">
+        <div class="gallery__item gallery__item--wide fade-in">
+          <img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?auto=format&fit=crop&w=1400&q=80" alt="Zen therapy space" />
+        </div>
+        <div class="gallery__item fade-in">
+          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=900&q=80" alt="Natural light" />
+        </div>
+        <div class="gallery__item fade-in">
+          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80" alt="Meditation" />
+        </div>
+        <div class="gallery__item fade-in">
+          <img src="https://images.unsplash.com/photo-1498579809087-ef1e558fd1da?auto=format&fit=crop&w=900&q=80" alt="Calm atmosphere" />
+        </div>
+        <div class="gallery__item gallery__item--wide fade-in">
+          <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1400&q=80" alt="Healing hands" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="cta" id="contact">
+    <div class="cta__bg-pattern"></div>
+    <div class="container">
+      <div class="cta__content fade-in">
+        <div class="cta__label">Book a Consultation</div>
+        <h2 class="cta__title">Ready to begin your healing journey?</h2>
+        <p class="cta__text">
+          A phone call is the fastest way to make an appointment or ask a question. Keep the next step simple.
+        </p>
+        <div class="cta__actions">
+          <a href="tel:0712345678" class="btn btn--primary">
+            <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;stroke-width:2;fill:none;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Call 07 1234 5678
+          </a>
+          <a href="mailto:hello@example.com" class="btn btn--outline">
+            Email / Contact Us
+          </a>
+        </div>
+        <a href="tel:0712345678" class="cta__phone">
+          <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          07 1234 5678
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-name">Ikiru</div>
+          <div class="footer__brand-sub">Holistic Therapies</div>
+          <p class="footer__brand-desc">
+            A calm, modern homepage concept with an oriental mood, strong phone-led conversion, and a simple visual hierarchy.
+          </p>
+        </div>
+        <div>
+          <div class="footer__heading">Explore</div>
+          <ul class="footer__links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__heading">Contact</div>
+          <ul class="footer__links">
+            <li><a href="tel:0712345678">07 1234 5678</a></li>
+            <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+            <li>By appointment only</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div>© 2026 Ikiru Holistic Therapies</div>
+        <div>Designed as a one-page concept</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // Navbar scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
