@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ikiru — Holistic Therapies</title>
+  <meta name="description" content="Ikiru Holistic Therapies — a calm oriental-inspired wellness homepage focused on booking and phone contact." />
+  <style>
+    :root {
+      --bg: #f3ece2;
+      --bg-soft: #e8ded0;
+      --panel: rgba(255, 251, 245, 0.72);
+      --panel-solid: #f8f2e8;
+      --ink: #1d1a17;
+      --muted: #5e554a;
+      --line: rgba(29, 26, 23, 0.12);
+      --gold: #b88a3b;
+      --gold-2: #d0a75c;
+      --lacquer: #191614;
+      --clay: #8d5f44;
+      --sage: #7a846d;
+      --shadow: 0 20px 50px rgba(29, 26, 23, 0.10);
+      --shadow-soft: 0 10px 28px rgba(29, 26, 23, 0.08);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+      --max: 1180px;
+      --pad: clamp(16px, 3vw, 34px);
+      --ease: cubic-bezier(.2,.8,.2,1);
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184,138,59,.08), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(122,132,109,.08), transparent 24%),
+        linear-gradient(180deg, #f6efe5 0%, #efe4d4 100%);
+      font-family: var(--sans);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(var(--max), calc(100% - 2 * var(--pad)));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      font-size: .72rem;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: currentColor;
+      opacity: .8;
+    }
+
+    h1, h2, h3, .brand {
+      font-family: var(--serif);
+      font-weight: 600;
+      line-height: .92;
+      letter-spacing: -.02em;
+      margin: 0;
+    }
+    h1 { font-size: clamp(3.4rem, 7vw, 7.2rem); max-width: 9.5ch; }
+    h2 { font-size: clamp(2.2rem, 3.8vw, 4rem); max-width: 12ch; }
+    h3 { font-size: clamp(1.45rem, 2vw, 1.95rem); }
+    p { margin: 0; color: var(--muted); }
+    .lede { font-size: clamp(1.03rem, 1.05vw, 1.18rem); max-width: 42rem; }
+
+    .btn-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: transform .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease), box-shadow .25s var(--ease);
+      cursor: pointer;
+      white-space: nowrap;
+      font-weight: 600;
+      letter-spacing: .01em;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--gold);
+      color: #fff;
+      box-shadow: 0 14px 26px rgba(184,138,59,.22);
+    }
+    .btn-primary:hover { background: #a8792c; }
+    .btn-secondary {
+      background: rgba(255,255,255,.42);
+      border-color: var(--line);
+      color: var(--ink);
+      backdrop-filter: blur(10px);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.62); border-color: rgba(29,26,23,.18); }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      transition: background .3s var(--ease), box-shadow .3s var(--ease), backdrop-filter .3s var(--ease);
+    }
+    .site-header.is-scrolled {
+      background: rgba(243,236,226,.78);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 28px rgba(29, 26, 23, .07);
+      border-bottom: 1px solid rgba(29,26,23,.08);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 86px;
+      gap: 18px;
+    }
+    .brand-wrap { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .seal {
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      display: grid; place-items: center;
+      border: 1px solid rgba(184,138,59,.95);
+      background: linear-gradient(145deg, rgba(29,22,20,.98), rgba(29,22,20,.90));
+      box-shadow: 0 10px 24px rgba(29,26,23,.18);
+      flex: none;
+    }
+    .seal svg { width: 19px; height: 19px; fill: #d7b46b; }
+    .brand { font-size: 1.55rem; color: var(--ink); line-height: .9; }
+    .brand small {
+      display: block;
+      font-family: var(--sans);
+      font-size: .71rem;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: rgba(29,26,23,.72);
+      font-size: .95rem;
+    }
+    .nav-links a { position: relative; padding-block: 6px; }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 100%; height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s var(--ease);
+      opacity: .6;
+    }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta { min-height: 46px; padding-inline: 18px; font-size: .92rem; }
+
+    .hero {
+      position: relative;
+      padding: clamp(28px, 4vw, 44px) 0 clamp(42px, 6vw, 84px);
+    }
+    .hero-grid {
+      display: grid;
+      gap: clamp(24px, 4vw, 42px);
+      align-items: center;
+      grid-template-columns: 1.03fr .97fr;
+      min-height: calc(100vh - 86px - 40px);
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      padding-block: 18px;
+    }
+    .hero-copy p { max-width: 36rem; }
+    .hero-kicker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      margin: 20px 0 18px;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+    .hero-kicker span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.48);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+    .hero-callout {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border-left: 3px solid var(--gold);
+      background: rgba(255,255,255,.34);
+      border-radius: 0 18px 18px 0;
+      max-width: 38rem;
+    }
+    .hero-callout strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      line-height: 1;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+    .hero-callout p { font-size: .98rem; }
+
+    .hero-image {
+      position: relative;
+      min-height: 680px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(25,22,20,.05), rgba(25,22,20,.28)),
+        url('https://source.unsplash.com/1400x1800/?therapist,portrait,wellness,asia') center/cover no-repeat;
+      isolation: isolate;
+    }
+    .hero-image::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(25,22,20,.04), rgba(25,22,20,.24));
+    }
+    .hero-card {
+      position: absolute;
+      left: 18px; right: 18px; bottom: 18px;
+      padding: 18px 18px 16px;
+      border-radius: 22px;
+      background: rgba(243,236,226,.84);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.55);
+      box-shadow: var(--shadow-soft);
+      z-index: 1;
+    }
+    .hero-card strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      line-height: .95;
+      margin-bottom: 6px;
+    }
+    .hero-card p { font-size: .94rem; max-width: 34ch; }
+
+    .phone-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: rgba(25,22,20,.78);
+      color: #f6efe5;
+      border: 1px solid rgba(208,167,92,.25);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 14px 30px rgba(0,0,0,.12);
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+    .phone-badge span {
+      display: grid; place-items: center;
+      width: 28px; height: 28px;
+      border-radius: 999px;
+      background: rgba(208,167,92,.16);
+      color: #f6efe5;
+    }
+
+    .scroll-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 34px;
+      color: var(--muted);
+      font-size: .82rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .scroll-indicator span {
+      width: 42px; height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      display: grid; place-items: center;
+      background: rgba(255,255,255,.4);
+    }
+
+    .trust { padding: 6px 0 46px; }
+    .trust-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .trust-item {
+      background: rgba(255,255,255,.54);
+      border: 1px solid rgba(29,26,23,.08);
+      border-radius: 22px;
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow-soft);
+    }
+    .trust-item .num {
+      display: block;
+      font-family: var(--serif);
+      font-size: 2rem;
+      line-height: .9;
+      color: var(--lacquer);
+      margin-bottom: 6px;
+    }
+    .trust-item p { font-size: .95rem; }
+
+    section.block { padding: clamp(70px, 10vw, 124px) 0; }
+    .section-head {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+    .section-head .lede { max-width: 40rem; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: clamp(24px, 4vw, 46px);
+      align-items: center;
+    }
+    .about-photo {
+      position: relative;
+      min-height: 640px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: linear-gradient(180deg, rgba(25,22,20,.10), rgba(25,22,20,.26));
+    }
+    .about-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .about-badge {
+      position: absolute;
+      left: 18px; top: 18px;
+      background: rgba(243,236,226,.88);
+      border: 1px solid rgba(255,255,255,.55);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow-soft);
+      min-width: 150px;
+    }
+    .about-badge strong { display: block; font-family: var(--serif); font-size: 2rem; line-height: .9; color: var(--lacquer); }
+    .about-badge span { font-size: .82rem; color: var(--muted); }
+    .about-copy h2 { margin-bottom: 16px; }
+    .quote {
+      position: relative;
+      margin: 28px 0;
+      padding: 24px 24px 24px 28px;
+      border-left: 2px solid rgba(184,138,59,.35);
+      background: rgba(255,255,255,.38);
+      border-radius: 0 22px 22px 0;
+    }
+    .quote p {
+      font-family: var(--serif);
+      font-size: clamp(1.45rem, 2vw, 2.05rem);
+      line-height: 1.05;
+      color: var(--ink);
+      max-width: 16ch;
+    }
+
+    .services {
+      background: linear-gradient(180deg, rgba(239,227,211,.18), rgba(239,227,211,.56));
+      border-top: 1px solid rgba(29,26,23,.06);
+      border-bottom: 1px solid rgba(29,26,23,.06);
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .service-card {
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(29,26,23,.08);
+      border-radius: 26px;
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+      border-color: rgba(184,138,59,.22);
+    }
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: 18px;
+      display: grid; place-items: center;
+      background: linear-gradient(145deg, rgba(25,22,20,.96), rgba(25,22,20,.86));
+      color: #d7b46b;
+      margin-bottom: 18px;
+      font-size: 1.4rem;
+    }
+    .service-card p { margin-top: 12px; font-size: .96rem; }
+    .card-link {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 18px;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .step {
+      padding: 22px 18px;
+      background: rgba(255,255,255,.5);
+      border: 1px solid rgba(29,26,23,.08);
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      min-height: 190px;
+    }
+    .step .index {
+      width: 38px; height: 38px;
+      border-radius: 999px;
+      background: rgba(25,22,20,.08);
+      color: var(--lacquer);
+      display: grid; place-items: center;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .step p { margin-top: 10px; font-size: .95rem; }
+    .arrow {
+      display: grid;
+      place-items: center;
+      color: rgba(25,22,20,.35);
+      font-size: 1.4rem;
+      align-self: center;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .featured-quote {
+      position: relative;
+      background: linear-gradient(145deg, rgba(25,22,20,.98), rgba(25,22,20,.90));
+      color: #fff;
+      border-radius: 30px;
+      overflow: hidden;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      isolation: isolate;
+    }
+    .featured-quote::before {
+      content: "“";
+      position: absolute;
+      top: -10px; left: 20px;
+      font-family: var(--serif);
+      font-size: 10rem;
+      line-height: 1;
+      opacity: .12;
+    }
+    .featured-quote p {
+      color: rgba(255,255,255,.92);
+      font-size: clamp(1.45rem, 2vw, 2.1rem);
+      font-family: var(--serif);
+      line-height: 1.06;
+      max-width: 17ch;
+    }
+    .featured-quote .name { margin-top: 18px; color: rgba(255,255,255,.74); font-size: .95rem; }
+    .mini-quotes { display: grid; gap: 18px; }
+    .mini-quote {
+      background: rgba(255,255,255,.56);
+      border: 1px solid rgba(29,26,23,.08);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+    }
+    .mini-quote p { color: var(--ink); font-size: 1.02rem; }
+    .mini-quote .name { margin-top: 12px; color: var(--muted); font-size: .92rem; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .85fr .9fr;
+      gap: 18px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      min-height: 260px;
+      box-shadow: var(--shadow-soft);
+      transform: translateZ(0);
+    }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .5s var(--ease);
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item.large { min-height: 520px; }
+    .gallery-stack { display: grid; gap: 18px; }
+
+    .cta { padding: 0 0 clamp(76px, 10vw, 130px); }
+    .cta-panel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      padding: clamp(34px, 6vw, 70px);
+      background:
+        linear-gradient(180deg, rgba(25,22,20,.72), rgba(25,22,20,.90)),
+        url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+    .cta-panel p { color: rgba(255,255,255,.82); max-width: 42rem; }
+    .cta-panel .btn-secondary { background: rgba(255,255,255,.14); color: #fff; border-color: rgba(255,255,255,.24); }
+    .cta-panel .btn-secondary:hover { background: rgba(255,255,255,.2); }
+
+    .site-footer {
+      background: var(--lacquer);
+      color: rgba(255,255,255,.86);
+      padding: 46px 0 28px;
+      border-top-left-radius: 36px;
+      border-top-right-radius: 36px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .9fr .9fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .footer-grid p { color: rgba(255,255,255,.7); }
+    .footer-links { display: grid; gap: 12px; justify-items: start; }
+    .footer-links a { color: rgba(255,255,255,.82); }
+    .footer-bottom {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: rgba(255,255,255,.58);
+      font-size: .9rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1080px) {
+      .hero-grid, .about-grid, .testimonial-grid, .footer-grid { grid-template-columns: 1fr; }
+      .hero-image, .about-photo { min-height: 520px; }
+      .card-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-grid .arrow { display: none; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item.large { grid-column: 1 / -1; min-height: 420px; }
+      .trust-bar { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 720px) {
+      :root { --pad: 16px; }
+      h1 { max-width: 10ch; }
+      .nav { min-height: 76px; }
+      .brand { font-size: 1.3rem; }
+      .seal { width: 38px; height: 38px; border-radius: 14px; }
+      .hero { padding-top: 24px; }
+      .hero-grid { min-height: auto; }
+      .hero-image, .about-photo { min-height: 420px; }
+      .card-grid, .trust-bar, .process-grid, .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item.large { min-height: 320px; }
+      .section-head { grid-template-columns: 1fr; }
+      .btn-row { flex-direction: column; align-items: stretch; }
+      .btn, .nav-cta { width: 100%; }
+      .hero-card { left: 14px; right: 14px; bottom: 14px; }
+      .site-footer { border-top-left-radius: 28px; border-top-right-radius: 28px; }
+      .phone-badge { top: auto; bottom: 18px; left: 18px; right: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container nav">
+      <a class="brand-wrap" href="#top" aria-label="Ikiru home">
+        <span class="seal" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2c-.7 3.6-2.3 5.7-5.7 7.3C9.6 10.9 11.3 13 12 18c.7-5 2.4-7.1 5.7-8.7C14.3 7.7 12.7 5.6 12 2Zm0 8.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+          </svg>
+        </span>
+        <span class="brand">Ikiru<small>Holistic Therapies</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary nav-cta" href="tel:0712345678">Call Now</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Oriental inspired healing</span>
+          <h1>Thirty years of listening with my hands.</h1>
+          <p class="lede" style="margin-top:18px;">
+            Ikiru combines shiatsu, cupping, dry needling, moxibustion and gentle energetic work into calm, personalised sessions. The emphasis is simple: restore balance, reduce pain, and help you feel well again.
+          </p>
+          <div class="hero-kicker" aria-label="Highlights">
+            <span>30+ years experience</span>
+            <span>By appointment only</span>
+            <span>Holistic care</span>
+          </div>
+          <div class="hero-callout">
+            <strong>Phone is the fastest way to book.</strong>
+            <p>Call now to arrange an appointment or ask a quick question before you visit.</p>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="tel:0712345678">Call 07 1234 5678</a>
+            <a class="btn btn-secondary" href="#contact">Book / Contact Us</a>
+          </div>
+          <a class="scroll-indicator" href="#about">
+            <span aria-hidden="true">↓</span>
+            Scroll to explore
+          </a>
+        </div>
+
+        <div class="hero-image reveal" aria-label="Calm wellness imagery">
+          <div class="phone-badge"><span>☎</span> 07 1234 5678</div>
+          <div class="hero-card">
+            <strong>Simple, calm, and easy to book.</strong>
+            <p>Use the phone number or the contact button to make the first step effortless for your visitors.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust">
+      <div class="container trust-bar reveal">
+        <div class="trust-item"><span class="num">30+</span><p>Years of hands-on experience guiding each session.</p></div>
+        <div class="trust-item"><span class="num">5★</span><p>Warm, personal care with a focus on comfort and trust.</p></div>
+        <div class="trust-item"><span class="num">6</span><p>Core therapies working together under one calm approach.</p></div>
+        <div class="trust-item"><span class="num">Call</span><p>Fastest way to book an appointment or ask a question.</p></div>
+      </div>
+    </section>
+
+    <section class="block" id="about">
+      <div class="container about-grid">
+        <div class="about-photo reveal">
+          <img src="https://source.unsplash.com/1200x1600/?massage-therapy,practitioner,spa,asia" alt="Therapist portrait in a calm treatment setting" />
+          <div class="about-badge" style="z-index:1;">
+            <strong>30+</strong>
+            <span>Years of listening to the body</span>
+          </div>
+        </div>
+        <div class="about-copy reveal">
+          <span class="eyebrow">About Ikiru</span>
+          <h2 style="margin-top:14px;">A practice shaped around what your body needs today.</h2>
+          <p class="lede" style="margin-top:16px;">
+            The approach is calm, collaborative and highly individual. Rather than chasing symptoms, the treatment looks for what is keeping the imbalance in place—and gently works toward better movement, circulation, and ease.
+          </p>
+          <div class="quote">
+            <p>“Lasting wellbeing comes from treating the whole person, not just the symptoms.”</p>
+          </div>
+          <p>
+            Sessions can include shiatsu, cupping, dry needling, moxibustion, exercise therapy, energy medicine and food-as-medicine guidance. Each visit is shaped to your condition, your pace, and your life.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="tel:0712345678">Book by Phone</a>
+            <a class="btn btn-secondary" href="#services">See Services</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block services" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Services</span>
+            <h2 style="margin-top:14px;">Therapies that work together.</h2>
+          </div>
+          <p class="lede">A clean presentation of the main modalities, each introduced as part of a broader healing plan rather than a disconnected list.</p>
+        </div>
+
+        <div class="card-grid">
+          <article class="service-card reveal">
+            <div class="service-icon">✦</div>
+            <h3>Shiatsu</h3>
+            <p>Deeply relaxing hands-on work that supports alignment, balance and nervous system calm.</p>
+            <a class="card-link" href="#contact">Book a session <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-icon">○</div>
+            <h3>Cupping</h3>
+            <p>A traditional technique used to encourage circulation and release tension in tight tissue.</p>
+            <a class="card-link" href="#contact">Book a session <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-icon">↯</div>
+            <h3>Dry Needling</h3>
+            <p>Precise treatment for stubborn muscular pain, knots, and restricted movement.</p>
+            <a class="card-link" href="#contact">Book a session <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-icon">☼</div>
+            <h3>Moxibustion</h3>
+            <p>Gentle heat therapy used to warm stagnant areas and support natural healing.</p>
+            <a class="card-link" href="#contact">Book a session <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-icon">◌</div>
+            <h3>Energy Medicine</h3>
+            <p>Subtle work that addresses how stress, fatigue and imbalance can show up in the body.</p>
+            <a class="card-link" href="#contact">Book a session <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-icon">▣</div>
+            <h3>Exercise Therapy</h3>
+            <p>Simple movement guidance to extend the benefits of treatment into daily life.</p>
+            <a class="card-link" href="#contact">Book a session <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="process">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">The Ikiru method</span>
+            <h2 style="margin-top:14px;">Listen. Understand. Treat. Restore.</h2>
+          </div>
+          <p class="lede">A visual treatment journey that feels clear and reassuring, with enough structure to communicate the process without becoming clinical.</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="step reveal">
+            <div class="index">1</div>
+            <h3>Listen</h3>
+            <p>A calm conversation about symptoms, history and what your body is asking for.</p>
+          </div>
+          <div class="arrow reveal" aria-hidden="true">→</div>
+          <div class="step reveal">
+            <div class="index">2</div>
+            <h3>Understand</h3>
+            <p>Identify patterns in posture, stress, and daily habits that may be contributing.</p>
+          </div>
+          <div class="arrow reveal" aria-hidden="true">→</div>
+          <div class="step reveal">
+            <div class="index">3</div>
+            <h3>Treat</h3>
+            <p>Select the right combination of therapies for the day, not a fixed protocol.</p>
+          </div>
+          <div class="arrow reveal" aria-hidden="true">→</div>
+          <div class="step reveal">
+            <div class="index">4</div>
+            <h3>Restore</h3>
+            <p>Support the body’s capacity to unwind, recover and move with greater ease.</p>
+          </div>
+          <div class="arrow reveal" aria-hidden="true">→</div>
+          <div class="step reveal">
+            <div class="index">5</div>
+            <h3>Maintain</h3>
+            <p>Optional follow-up guidance to help the benefits last beyond the treatment room.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="testimonials">
+      <div class="container testimonial-grid">
+        <article class="featured-quote reveal">
+          <span class="eyebrow" style="color: rgba(255,255,255,.7);">Client testimonial</span>
+          <p style="margin-top:18px;">“I felt calmer, lighter, and more mobile after just one session.”</p>
+          <div class="name">— Sarah W.</div>
+        </article>
+        <div class="mini-quotes">
+          <article class="mini-quote reveal">
+            <p>“Thoughtful, gentle and incredibly effective. The space itself feels healing.”</p>
+            <div class="name">— Daniel P.</div>
+          </article>
+          <article class="mini-quote reveal">
+            <p>“A beautifully calm experience from start to finish—very personal, very professional.”</p>
+            <div class="name">— Michelle T.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Gallery</span>
+            <h2 style="margin-top:14px;">A calm visual language.</h2>
+          </div>
+          <p class="lede">These image blocks help sell the feeling of the clinic: warmth, softness, natural light, and quiet confidence.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item large reveal">
+            <img src="https://source.unsplash.com/1600x1200/?massage-room,spa,interior,oriental" alt="Therapy room with calm natural light" />
+          </div>
+          <div class="gallery-stack">
+            <div class="gallery-item reveal">
+              <img src="https://source.unsplash.com/900x1200/?shiatsu,massage,oriental" alt="Soft natural-light portrait" />
+            </div>
+            <div class="gallery-item reveal">
+              <img src="https://source.unsplash.com/900x1200/?massage,hands,wellness,spa" alt="Still life spa setting" />
+            </div>
+          </div>
+          <div class="gallery-item reveal">
+            <img src="https://source.unsplash.com/900x1200/?treatment-room,asian-spa,relaxation" alt="Therapy room treatment table" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container">
+        <div class="cta-panel reveal">
+          <span class="eyebrow" style="color: rgba(255,255,255,.7);">Book a consultation</span>
+          <h2 style="margin-top:14px; color:#fff; max-width: 12ch;">Ready to begin your healing journey?</h2>
+          <p style="margin-top:16px;">A phone call is the fastest way to make an appointment or ask a question. Keep the next step simple for your visitors.</p>
+          <div class="btn-row" style="margin-top:24px;">
+            <a class="btn btn-primary" href="tel:0712345678">Call 07 1234 5678</a>
+            <a class="btn btn-secondary" href="mailto:hello@example.com">Email / Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="color:#fff;">Ikiru<small style="color: rgba(255,255,255,.62);">Holistic Therapies</small></div>
+        <p style="margin-top:16px; max-width: 32rem;">A calm, modern homepage concept designed for GoHighLevel with an oriental mood, strong phone-led conversion, and a simple visual hierarchy.</p>
+      </div>
+      <div class="footer-links">
+        <strong style="color:#fff; font-family: var(--sans); font-size:.92rem; letter-spacing:.16em; text-transform:uppercase;">Explore</strong>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#gallery">Gallery</a>
+      </div>
+      <div class="footer-links">
+        <strong style="color:#fff; font-family: var(--sans); font-size:.92rem; letter-spacing:.16em; text-transform:uppercase;">Contact</strong>
+        <a href="tel:0712345678">07 1234 5678</a>
+        <a href="mailto:hello@example.com">hello@example.com</a>
+        <span>By appointment only</span>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Ikiru Holistic Therapies</span>
+      <span>Designed as a one-page concept for GHL</span>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('siteHeader');
+    const revealEls = document.querySelectorAll('.reveal');
+
+    function onScroll() {
+      header.classList.toggle('is-scrolled', window.scrollY > 8);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(el => io.observe(el));
+    } else {
+      revealEls.forEach(el => el.classList.add('is-visible'));
+    }
+  </script>
+</body>
+</html>
